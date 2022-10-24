@@ -1,11 +1,12 @@
 <h1 align="center"> APS - Calculadora de CO² </h1>
 
 <p align="center">
-Calculadora de CO² aonde o taxista ou motorista de aplicativo consigam determinar o índice de emissão de carbono pelo seu carro
+Calculadora de CO² aonde um taxista ou motorista de aplicativo consigam determinar o índice de emissão de carbono pelo seu carro.
 </p>
 
 <p align="center">
   <a href="#-tecnologia">Tecnologia</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-grupo">Grupo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
@@ -21,6 +22,12 @@ Calculadora de CO² aonde o taxista ou motorista de aplicativo consigam determin
 Esse projeto foi desenvolvido com a seguinte tecnologia:
 
 - Python
+
+## 📚 Grupo:
+- Gabriel Francisco da Silva Osório;
+- Gustavo Oliveira Fonseca;
+- Kayky Vasconcelos da Silva;
+- [Rafael Ferreira Machado](https://github.com/rafaelmachadobr);
 
 ## 💻 Projeto
 
