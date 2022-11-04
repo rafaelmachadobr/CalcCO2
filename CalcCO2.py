@@ -1,10 +1,36 @@
 from math import ceil
 
 
-alcool = 5 * 0.82 * 0.79 * 3.7
-diesel = 5 * 0.83 * 3.7
-etanol = 5 * 0.82 * 0.78 * 3.7
-gasolina = 5 * 0.82 * 0.75 * 3.7
+def converter_consumo_em_co2(x: float, y: str, z: int) -> float:
+    """
+    Essa função converte do consumo anual em emissão total
+
+    :param x: Consumo anual
+    :type x: float
+    :param y: Tipo de combustível
+    :type y: int
+    :param y: Dia
+    :type y: int
+
+    :return: A conversão do consumo anual em emissão total
+    :rtype: float
+    """
+
+    alcool = z * 0.82 * 0.79 * 3.7
+    diesel = z * 0.83 * 3.7
+    etanol = z * 0.82 * 0.78 * 3.7
+    gasolina = z * 0.82 * 0.75 * 3.7
+
+    if y == 'alcool':
+        return x * alcool
+    elif y == 'diesel':
+        return x * diesel
+    elif y == 'etanol':
+        return x * etanol
+    elif y == 'gasolina':
+        return x * gasolina
+
+
 continuar = 's'
 
 print('-' * 80)
@@ -18,7 +44,15 @@ while continuar != 'n':
             input('\nDigite a média de quilômetro (Km) que seu carro roda por dia: '))
 
         taxa_consumo = int(
-            input('Digite a média de quilômetro por litro (Km/L) do seu carro: '))
+            input('\nDigite a média de quilômetro por litro (Km/L) do seu carro: '))
+
+        dia = int(
+            input('\nDigite quantos dias por semana você utiliza seu veículo: '))
+
+        if dia < 0 or dia > 7:
+            print(
+                f'\nUma semana tem 7 dias e você digitou o dia "{dia}", tente novamente!')
+            continue
 
         if taxa_consumo <= 0:
             print(f'\n"{taxa_consumo}" não pode, tente novamente!')
@@ -27,11 +61,11 @@ while continuar != 'n':
         consumo_diario = distancia_dia / taxa_consumo
         consumo_anual = consumo_diario * 53
 
-        print(f"\nSeu consumo diário é de {consumo_diario:.2f} Litros,\n"
-              f"Já o seu consumo anual é de {consumo_anual:.2f} Litros\n")
+        print(f'\nCom os dados adquiridos, foi concluído que em 1 dia seu carro consome {consumo_diario:.2f} Litros,\n'
+              f'Já em 1 ano é consumido {consumo_anual:.2f} Litros.\n')
 
         tipo_combustivel = input(
-            f"Escolha o tipo de combustível que você utiliza:\n"
+            f"Das opções abaixo, digite o número que corresponde ao combustível utilizado com maior frequência em seu veículo:\n"
             "[ 1 ] - Álcool \n"
             "[ 2 ] - Diesel \n"
             "[ 3 ] - Etanol \n"
@@ -39,16 +73,26 @@ while continuar != 'n':
             "Digite sua opção: ").replace(' ', '').lower()
 
         if tipo_combustivel == '1' or tipo_combustivel == 'alcool':
-            emissoes_totais = consumo_anual * alcool
+            laboratorio = 'RenovaCalc (planilha de emissões RenovaBio)'
+            combustivel = 'alcool'
         elif tipo_combustivel == '2' or tipo_combustivel == 'diesel':
-            emissoes_totais = consumo_anual * diesel
+            laboratorio = 'Instituto de pesquisa aplicada (IPEA)'
+            combustivel = 'diesel'
         elif tipo_combustivel == '3' or tipo_combustivel == 'etanol':
-            emissoes_totais = consumo_anual * etanol
+            laboratorio = 'RenovaCalc (planilha de emissões RenovaBio)'
+            combustivel = 'etanol'
         elif tipo_combustivel == '4' or tipo_combustivel == 'gasolina':
-            emissoes_totais = consumo_anual * gasolina
+            laboratorio = 'Laboratório de Silvicultura Tropical'
+            combustivel = 'gasolina'
         else:
-            print(f'"{tipo_combustivel}" não é um opção valida, tente novamente!\n')
+            print(f'"{tipo_combustivel}" não é um opção valida. Por favor digite apenas o NÚMERO correspondente ao combustível utilizado frequentemente (Ex: 1 = álcool ), tente novamente!')
             continue
+
+        emissoes_totais = converter_consumo_em_co2(
+            x=consumo_anual, y=combustivel, z=dia)
+
+        print(
+            f'\nCerto, o combustível que você utiliza regularmente em seu veículo é {combustivel}.')
 
         print(
             f"\nSua emissão total é de {emissoes_totais:.2f} kg de CO2 por ano.\n")
@@ -59,15 +103,23 @@ while continuar != 'n':
         emisao_pessoa = emissoes_totais / numero_pessoas
 
         print(
-            f"\nA emissão por pessoa fica assim {emisao_pessoa:.2f} kg de CO2 por ano.\n")
+            f"\nCada passageiro emite anualmente {emisao_pessoa:.2f} kg de CO2 por ano.\n")
 
         plantar_arvores_atlantica = ceil(emisao_pessoa / 130)
         plantar_arvores_amazonia = ceil(emisao_pessoa / 220)
 
+        print('De acordo com o Laboratório de Silvicultura Tropical, uma árvore na amazônia com 30 anos de crescimento.\n'
+              'Assim, pode estocar em torno de 130 kg CO2-eq para as árvores na Mata Atlântica e 222 kg CO2-eq para as árvores da Floresta Amazônica. \n'
+              f'Sendo assim, deverá ser plantado {plantar_arvores_atlantica} árvore(s) por ano na Mata Atlântica ou plantar {plantar_arvores_amazonia} árvore(s) na Amazônia.\n')
+
         plantou = input('Você plantou alguma arvore ano passado? [s/n] ')
         if plantou == 's' or plantou == 'sim':
             arvores_plantadas = int(
-                input('Quantas árvores você plantou no ano passado: '))
+                input('\nQuantas árvores você plantou no ano passado: '))
+            if arvores_plantadas < 0:
+                print(
+                    f'"{arvores_plantadas}" não é um número inteiro e positivo, tente novamente!')
+                continue
         else:
             arvores_plantadas = 0
 
