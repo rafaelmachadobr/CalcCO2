@@ -26,8 +26,8 @@ Esse projeto foi desenvolvido com a seguinte tecnologia:
 ## 📚 Grupo:
 - Gabriel Francisco da Silva Osório;
 - Gustavo Oliveira Fonseca;
-- Kayky Vasconcelos da Silva;
-- [Rafael Ferreira Machado](https://github.com/rafaelmachadobr);
+- [Kayky Vasconcelos da Silva](https://github.com/kaykyvasconcelos);
+- [Rafael Ferreira Machado](https://github.com/rafaelmachadobr).
 
 ## 💻 Projeto
 
