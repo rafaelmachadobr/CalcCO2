@@ -73,16 +73,12 @@ while continuar != 'n':
             "Digite sua opção: ").replace(' ', '').lower()
 
         if tipo_combustivel == '1' or tipo_combustivel == 'alcool':
-            laboratorio = 'RenovaCalc (planilha de emissões RenovaBio)'
             combustivel = 'alcool'
         elif tipo_combustivel == '2' or tipo_combustivel == 'diesel':
-            laboratorio = 'Instituto de pesquisa aplicada (IPEA)'
             combustivel = 'diesel'
         elif tipo_combustivel == '3' or tipo_combustivel == 'etanol':
-            laboratorio = 'RenovaCalc (planilha de emissões RenovaBio)'
             combustivel = 'etanol'
         elif tipo_combustivel == '4' or tipo_combustivel == 'gasolina':
-            laboratorio = 'Laboratório de Silvicultura Tropical'
             combustivel = 'gasolina'
         else:
             print(f'"{tipo_combustivel}" não é um opção valida. Por favor digite apenas o NÚMERO correspondente ao combustível utilizado frequentemente (Ex: 1 = álcool ), tente novamente!')
